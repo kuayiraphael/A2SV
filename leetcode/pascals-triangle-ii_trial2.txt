@@ -1,0 +1,14 @@
+class Solution:
+    def getRow(self, rowIndex: int) -> List[int]:
+        ans = [[1],[1,1]]
+
+        for i in  range(32):
+            key = ans[-1]
+            temp = [1]
+
+            for i in  range(1,len(key)):
+                temp.append(key[i]+key[i-1])
+            temp.append(1)
+            ans.append(temp)
+        
+        return ans[rowIndex]
