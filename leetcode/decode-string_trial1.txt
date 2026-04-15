@@ -1,0 +1,20 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack = []
+
+        for i in range(len(s)):
+            if s[i]!="]":
+                stack.append(s[i])
+            else:
+                store = ""
+                while stack and  stack[-1]!="[":
+                    store+=stack.pop()
+                stack.pop()
+
+                num = ""
+                while stack and stack[-1].isdigit():
+                    num+=stack.pop()
+                key = store[::-1]*int(num[::-1])
+                for i in key:
+                    stack.append(i)
+        return "".join(stack)
